@@ -21,4 +21,16 @@ Web3Forms API - for form submissions without backend setup.
 ✅ Interactive To-do List with add, check, and delete features.
 ✅ Persistent Data using localStorage.
 
+🚀 Getting Started
+1.Clone the repository:
+git clone https://github.com/yourusername/your-repo-name.git
+
+2.Open index.html in your browser.
+
+No build tools or installation required – it's 100% frontend and runs directly in the browser.
+
+📌 Note
+Replace the Web3Forms access key with your own from Web3Forms.
+
+
 
