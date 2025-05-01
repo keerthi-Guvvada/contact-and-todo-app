@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet"  href="Task2.css">
+ 
+  <title>Contact & To-do-list</title>
+</head>
+<body>
+  <main>
+  <section class="contact-container">
+    <form action="https://api.web3forms.com/submit" method="POST" class="contact-left">
+      <div class="contact-left-title">
+        <h2>Get in touch</h2>
+        <hr>
+      </div>
+      <input type="hidden" name="access_key" value="8e845241-ec7e-4532-a020-22f18e1bd979">
+      <input type="text" name="name" placeholder="Your name" class="contact-inputs" required/>
+      <input type="text" name="email" placeholder="Your Email" class="contact-inputs" required/>
+      <textarea name="message" placeholder="Your message" class="contact-inputs" required></textarea>
+      <button type="submit">submit</button>
+    </form>
+    
+    <div class="contact-right">
+      <img src="https://img.freepik.com/premium-vector/woman-sits-desk-with-laptop-bird-flying-background_539216-6517.jpg?semt=ais_hybrid&w=740" alt="Contact Image">
+  </div>
+  </section>
+
+  <section class="container">
+    <h2>To-do-list</h2>
+    <div class="todo">
+      <div class="row">
+        <input type="text" id="inputBox" placeholder="Add your text"/>
+        <button onclick="addTask()">Add</button>
+      </div>
+      <ul id="list-container"></ul> 
+      
+    </div>
+  </section>
+</main>
+<!--Footer-->
+
+    <footer>&copy; 2025 ApexPlanet Software Pvt Ltd</footer>
+<!--Js-->
+    <script>
+    const inputBox = document.getElementById("inputBox") ;
+    const listContainer = document.getElementById("list-container");
+
+    
+    function addTask(){
+        if(inputBox.value ===''){
+        alert("you must write something");
+        }
+        else{
+            let li = document.createElement("li");
+            li.innerHTML = inputBox.value;
+            listContainer.appendChild(li);
+
+            let span = document.createElement("span");
+            span.innerHTML = "\u00d7";
+            li.appendChild(span);
+        }
+        inputBox.value="";
+        saveData();
+    }
+    listContainer.addEventListener("click" , function (e){
+        if(e.target.tagName ==="LI"){
+            e.target.classList . toggle("checked");
+            saveData();
+        }
+        else if(e.target.tagName === "SPAN"){
+            e.target.parentElement.remove();
+            saveData();
+        }
+    }, false);
+
+    function saveData(){
+        localStorage.setItem("Data", listContainer.innerHTML );
+    }
+    function showTask(){
+      listContainer.innerHTML = localStorage.getItem("data");
+
+    }
+    showTask();
+  </script>
+</body>
+</html>
